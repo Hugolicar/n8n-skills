@@ -1,0 +1,22 @@
+{
+  "id": "kommo-002",
+  "skills": ["n8n-stack-kommo"],
+  "query": "Configure a Kommo node to create a contact with name 'John Doe', phone '+5511999999999', and email 'john@example.com'. The phone field ID is 12345 and email field ID is 12346.",
+  "expected_behavior": [
+    "Sets resource to 'contacts' and operation to 'create'",
+    "Configures name parameter",
+    "Sets custom_fields with field_id 12345 for phone with enum '552476'",
+    "Sets custom_fields with field_id 12346 for email with enum '552488'",
+    "Shows correct custom field value format: { value: '...', enum: '...' }",
+    "Mentions credential kommoOAuth2Api"
+  ],
+  "baseline_without_skill": {
+    "likely_response": "May create basic contact without knowing custom field format or enum values for phone/email",
+    "expected_quality": "Low - would miss enum values and custom field structure"
+  },
+  "with_skill_expected": {
+    "response_quality": "High - complete contact creation with proper custom fields",
+    "uses_skill_content": true,
+    "provides_correct_config": true
+  }
+}

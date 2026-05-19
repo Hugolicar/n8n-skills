@@ -1,0 +1,23 @@
+{
+  "id": "kommo-003",
+  "skills": ["n8n-stack-kommo", "n8n-stack-zapi"],
+  "query": "Build a workflow that: 1) Receives a Kommo webhook when a lead status changes, 2) Extracts the phone from the lead, 3) Sends a WhatsApp message via Z-API saying 'Your lead has been updated'.",
+  "expected_behavior": [
+    "Configures Webhook node with path 'kommo-inbound'",
+    "Accesses lead data via $json.body.leads.status[0]",
+    "Extracts phone from custom_fields in a Code node",
+    "Cleans phone with .replace(/\\D/g, '')",
+    "Configures HTTP Request for Z-API send-text with =phone prefix",
+    "Responds to Kommo webhook within 2 seconds",
+    "Mentions both node types and credentials needed"
+  ],
+  "baseline_without_skill": {
+    "likely_response": "May struggle with both Kommo webhook structure and Z-API HTTP configuration",
+    "expected_quality": "Low - would likely get both webhook data access and Z-API config wrong"
+  },
+  "with_skill_expected": {
+    "response_quality": "High - complete end-to-end workflow with correct nodes and expressions",
+    "uses_skill_content": true,
+    "provides_complete_workflow": true
+  }
+}

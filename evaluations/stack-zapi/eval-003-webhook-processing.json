@@ -1,0 +1,21 @@
+{
+  "id": "zapi-003",
+  "skills": ["n8n-stack-zapi"],
+  "query": "I'm receiving a Z-API webhook but can't access the phone number. I'm using {{ $json.phone }} but it's undefined. What's wrong?",
+  "expected_behavior": [
+    "Identifies that webhook data is under $json.body.data",
+    "Provides correct expression: {{ $json.body.data.phone }}",
+    "Explains the webhook payload structure (event, instanceId, data)",
+    "Mentions $json.body.data.fromMe should be checked to avoid loops",
+    "Mentions buttonReply structure for interactive messages"
+  ],
+  "baseline_without_skill": {
+    "likely_response": "May suggest debugging without knowing Z-API webhook payload structure",
+    "expected_quality": "Low - would not know data is nested under .body.data"
+  },
+  "with_skill_expected": {
+    "response_quality": "High - immediately identifies the .body.data nesting issue",
+    "uses_skill_content": true,
+    "provides_correct_syntax": true
+  }
+}

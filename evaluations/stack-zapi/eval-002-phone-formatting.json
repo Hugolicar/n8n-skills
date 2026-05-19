@@ -1,0 +1,21 @@
+{
+  "id": "zapi-002",
+  "skills": ["n8n-stack-zapi"],
+  "query": "I have a phone number '+55 11 99999-9999' that I need to send via Z-API. How do I format it correctly?",
+  "expected_behavior": [
+    "Explains E.164 format requirement (DDI DDD NUMBER, digits only)",
+    "Provides expression: $json.phone.replace(/\\D/g, '')",
+    "Shows result: 5511999999999",
+    "Mentions stripping @s.whatsapp.net and @c.us suffixes if present",
+    "Notes Brazil format: starts with 55, 11 digits after (total 13)"
+  ],
+  "baseline_without_skill": {
+    "likely_response": "May suggest sending as-is or basic formatting without knowing Z-API requirements",
+    "expected_quality": "Low - would miss E.164 requirement"
+  },
+  "with_skill_expected": {
+    "response_quality": "High - gives exact expression and explains why",
+    "uses_skill_content": true,
+    "provides_correct_format": true
+  }
+}

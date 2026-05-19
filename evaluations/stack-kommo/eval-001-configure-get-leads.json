@@ -1,0 +1,23 @@
+{
+  "id": "kommo-001",
+  "skills": ["n8n-stack-kommo"],
+  "query": "How do I configure a node to get leads from Kommo CRM filtered by pipeline 7772595 and status 142?",
+  "expected_behavior": [
+    "Identifies node type: n8n-nodes-kommo.kommo",
+    "Sets resource to 'leads'",
+    "Sets returnAll to true or false with limit",
+    "Configures filter with pipelines array [7772595] and statuses array [142]",
+    "Mentions credential type kommoOAuth2Api",
+    "Notes that the community node must be installed first"
+  ],
+  "baseline_without_skill": {
+    "likely_response": "May not know the exact node type or that Kommo uses a community node, might suggest HTTP Request fallback",
+    "expected_quality": "Low - would not know specific node configuration"
+  },
+  "with_skill_expected": {
+    "response_quality": "High - precise node configuration with correct resource, filter, and credentials",
+    "uses_skill_content": true,
+    "provides_correct_node_type": true,
+    "includes_filter_config": true
+  }
+}

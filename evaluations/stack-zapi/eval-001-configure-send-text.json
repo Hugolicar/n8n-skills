@@ -1,0 +1,24 @@
+{
+  "id": "zapi-001",
+  "skills": ["n8n-stack-zapi"],
+  "query": "Configure a node to send a WhatsApp text message via Z-API. The phone number comes from $json.phone and the message from $json.message.",
+  "expected_behavior": [
+    "PREFERS community node n8n-nodes-zapi.zApi if available",
+    "Shows community node config with resource='messages', operation='sendMessage', messageType='text'",
+    "Mentions credential type 'zApi' with id, token, and clientToken",
+    "Provides HTTP Request fallback with correct URL pattern",
+    "Mentions phone must be cleaned with .replace(/\\D/g, '') before sending",
+    "Never hardcodes tokens; suggests $env variables"
+  ],
+  "baseline_without_skill": {
+    "likely_response": "May not know Z-API community node exists, would default to HTTP Request without knowing credential structure",
+    "expected_quality": "Low - would miss community node and proper credential setup"
+  },
+  "with_skill_expected": {
+    "response_quality": "High - prefers community node, provides fallback, includes auth best practices",
+    "uses_skill_content": true,
+    "provides_correct_node_type": true,
+    "includes_auth": true,
+    "uses_correct_parameters": true
+  }
+}

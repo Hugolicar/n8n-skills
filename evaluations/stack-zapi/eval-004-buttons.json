@@ -1,0 +1,21 @@
+{
+  "id": "zapi-004",
+  "skills": ["n8n-stack-zapi"],
+  "query": "How do I send a WhatsApp message with action buttons (Agendar, Ver Site, Ligar) using Z-API?",
+  "expected_behavior": [
+    "Explains community node does NOT support buttons (marked unavailable)",
+    "Provides HTTP Request approach with /send-button-actions endpoint",
+    "Shows buttonActions array with REPLY, URL, and CALL types",
+    "Includes title, footer, and message fields",
+    "Mentions button reply webhook handling via $json.body.data.buttonReply"
+  ],
+  "baseline_without_skill": {
+    "likely_response": "May try to use community node for buttons or not know the correct endpoint",
+    "expected_quality": "Low - would not know button limitation or correct HTTP Request config"
+  },
+  "with_skill_expected": {
+    "response_quality": "High - knows limitation and provides working HTTP Request solution",
+    "uses_skill_content": true,
+    "provides_correct_config": true
+  }
+}
